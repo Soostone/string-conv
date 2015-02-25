@@ -4,7 +4,6 @@
 module Data.String.Conv
     (StringConv (..), convS) where
 
-
 ------------------------------------------------------------------------------
 import           Data.ByteString.Char8      as B
 import           Data.ByteString.Lazy.Char8 as LB
@@ -63,7 +62,7 @@ instance StringConv LT.Text B.ByteString where toS = toS . LT.encodeUtf8
 
 
 ------------------------------------------------------------------------------
--- | A lens for toS.
+-- | A lens for 'toS' to make it slightly more convenient in some scenarios.
 convS :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
 convS f a = fmap toS (f (toS a))
 

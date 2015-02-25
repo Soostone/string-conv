@@ -1,5 +1,5 @@
 name:                string-conv
-version:             0.1.0.0
+version:             0.1
 synopsis:            Standardized conversion between string types
 description:         Avoids the need to remember many different functions
                      for converting string types.  Just use one universal
@@ -7,8 +7,8 @@ description:         Avoids the need to remember many different functions
 license:             BSD3
 license-file:        LICENSE
 author:              Ozgun Ataman
-maintainer:          oz@soostone.com
-copyright:           Ozgun Ataman
+maintainer:          ozgun.ataman@soostone.com
+copyright:           Soostone Inc, 2013-2015
 category:            Data
 build-type:          Simple
 cabal-version:       >=1.8
