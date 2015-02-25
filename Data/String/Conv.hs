@@ -2,7 +2,7 @@
 {-# LANGUAGE MultiParamTypeClasses #-}
 
 module Data.String.Conv
-    (StringConv (..), lensS) where
+    (StringConv (..), convS) where
 
 
 ------------------------------------------------------------------------------
@@ -64,6 +64,6 @@ instance StringConv LT.Text B.ByteString where toS = toS . LT.encodeUtf8
 
 ------------------------------------------------------------------------------
 -- | A lens for toS.
-lensS :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
-lensS f a = fmap toS (f (toS a))
+convS :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
+convS f a = fmap toS (f (toS a))
 
