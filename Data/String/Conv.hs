@@ -21,8 +21,11 @@ import           Data.Text.Lazy.Encoding    as LT
 -- variants.  This package includes support for String, ByteString, and Text
 -- as well as the Lazy and Strict variants where necessary.
 --
--- Use StringConv's toS function any place you have a fully defined string
--- conversion with a fixed (non-polymorphic) input and output type.
+-- StringConv's `toS` function is most useful when you have a fully defined
+-- string conversion with a fixed (non-polymorphic) input and output type.  Of
+-- course you can still use it when you don't have a fixed type.  In that case
+-- you might need to specify a type class constraint such as @StringConv
+-- s String@.
 class StringConv a b where
     -- | Universal string conversion function.
     toS :: a -> b
