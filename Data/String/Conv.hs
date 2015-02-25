@@ -3,10 +3,11 @@
 
 module Data.String.Conv
   ( StringConv (..)
+  , Leniency (..)
   , toS
   , toSL
   , convS
-  , Leniency (..)
+  , convSL
   ) where
 
 ------------------------------------------------------------------------------
@@ -108,4 +109,10 @@ decodeUtf8LT Strict = LT.decodeUtf8With T.lenientDecode
 -- | A lens for 'toS' to make it slightly more convenient in some scenarios.
 convS :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
 convS f a = fmap toS (f (toS a))
+
+
+------------------------------------------------------------------------------
+-- | A lens for 'toSL' to make it slightly more convenient in some scenarios.
+convSL :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
+convSL f a = fmap toS (f (toSL a))
 
