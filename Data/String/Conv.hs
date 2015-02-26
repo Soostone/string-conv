@@ -3,11 +3,11 @@
 
 module Data.String.Conv
   ( StringConv (..)
-  , Leniency (..)
   , toS
   , toSL
   , convS
   , convSL
+  , Leniency (..)
   ) where
 
 ------------------------------------------------------------------------------
