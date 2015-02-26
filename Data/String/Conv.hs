@@ -114,5 +114,5 @@ convS f a = fmap toS (f (toS a))
 ------------------------------------------------------------------------------
 -- | A lens for 'toSL' to make it slightly more convenient in some scenarios.
 convSL :: (StringConv a b, StringConv b a, Functor f) => (b -> f b) -> a -> f a
-convSL f a = fmap toS (f (toSL a))
+convSL f a = fmap toSL (f (toSL a))
 
