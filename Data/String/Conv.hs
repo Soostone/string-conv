@@ -95,14 +95,14 @@ instance StringConv LT.Text B.ByteString where strConv l = strConv l . LT.encode
 -- | Convenience helper for dispatching based on leniency.
 decodeUtf8T :: Leniency -> B.ByteString -> T.Text
 decodeUtf8T Lenient = T.decodeUtf8With T.lenientDecode
-decodeUtf8T Strict = T.decodeUtf8With T.lenientDecode
+decodeUtf8T Strict = T.decodeUtf8With T.strictDecode
 
 
 ------------------------------------------------------------------------------
 -- | Convenience helper for dispatching based on leniency.
 decodeUtf8LT :: Leniency -> LB.ByteString -> LT.Text
 decodeUtf8LT Lenient = LT.decodeUtf8With T.lenientDecode
-decodeUtf8LT Strict = LT.decodeUtf8With T.lenientDecode
+decodeUtf8LT Strict = LT.decodeUtf8With T.strictDecode
 
 
 ------------------------------------------------------------------------------
