@@ -18,6 +18,10 @@ extra-source-files:
   README.md
   changelog.md
 
+source-repository head
+  type:     git
+  location: https://github.com/Soostone/string-conv.git
+
 library
   exposed-modules:     Data.String.Conv
   build-depends:       base >= 4.4 && < 5, bytestring, text
