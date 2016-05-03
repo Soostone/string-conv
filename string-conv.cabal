@@ -25,4 +25,4 @@ source-repository head
 library
   exposed-modules:     Data.String.Conv
   build-depends:       base >= 4.4 && < 5, bytestring, text
-  ghc-options: -Wall -O2
+  ghc-options: -Wall
