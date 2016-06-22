@@ -18,6 +18,10 @@ extra-source-files:
   README.md
   changelog.md
 
+flag lib-Werror
+  default: False
+  manual: True
+
 source-repository head
   type:     git
   location: https://github.com/Soostone/string-conv.git
@@ -25,4 +29,7 @@ source-repository head
 library
   exposed-modules:     Data.String.Conv
   build-depends:       base >= 4.4 && < 5, bytestring, text
+  if flag(lib-Werror)
+    ghc-options: -Werror
+
   ghc-options: -Wall
