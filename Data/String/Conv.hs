@@ -61,8 +61,8 @@ toSL = strConv Lenient
 
 
 instance StringConv String String where strConv _ = id
-instance StringConv String B.ByteString where strConv _ = B.pack
-instance StringConv String LB.ByteString where strConv _ = LB.pack
+instance StringConv String B.ByteString where strConv l = T.encodeUtf8 . strConv l
+instance StringConv String LB.ByteString where strConv l = LT.encodeUtf8 . strConv l
 instance StringConv String T.Text where strConv _ = T.pack
 instance StringConv String LT.Text where strConv _ = LT.pack
 
