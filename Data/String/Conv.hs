@@ -66,13 +66,13 @@ instance StringConv String LB.ByteString where strConv l = LT.encodeUtf8 . strCo
 instance StringConv String T.Text where strConv _ = T.pack
 instance StringConv String LT.Text where strConv _ = LT.pack
 
-instance StringConv B.ByteString String where strConv _ = B.unpack
+instance StringConv B.ByteString String where strConv l = T.unpack . strConv l
 instance StringConv B.ByteString B.ByteString where strConv _ = id
 instance StringConv B.ByteString LB.ByteString where strConv _ = LB.fromChunks . return
 instance StringConv B.ByteString T.Text where strConv = decodeUtf8T
 instance StringConv B.ByteString LT.Text where strConv l = strConv l . LB.fromChunks . return
 
-instance StringConv LB.ByteString String where strConv _ = LB.unpack
+instance StringConv LB.ByteString String where strConv l = LT.unpack . strConv l
 instance StringConv LB.ByteString B.ByteString where strConv _ = B.concat . LB.toChunks
 instance StringConv LB.ByteString LB.ByteString where strConv _ = id
 instance StringConv LB.ByteString T.Text where strConv l = decodeUtf8T l . strConv l
