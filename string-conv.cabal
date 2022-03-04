@@ -26,3 +26,16 @@ library
   exposed-modules:     Data.String.Conv
   build-depends:       base >= 4.4 && < 5, bytestring, text
   ghc-options: -Wall
+
+test-suite tests
+  type:                exitcode-stdio-1.0
+  hs-source-dirs:      test
+  main-is:             Main.hs
+  ghc-options:         -Wall -threaded -rtsopts -with-rtsopts=-N
+  build-depends:       base >= 4.4 && < 5
+                     , bytestring
+                     , quickcheck-instances
+                     , string-conv
+                     , tasty
+                     , tasty-quickcheck
+                     , text

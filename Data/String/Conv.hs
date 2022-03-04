@@ -11,8 +11,8 @@ module Data.String.Conv
   ) where
 
 ------------------------------------------------------------------------------
-import           Data.ByteString.Char8      as B
-import           Data.ByteString.Lazy.Char8 as LB
+import           Data.ByteString            as B
+import           Data.ByteString.Lazy       as LB
 import           Data.Text                  as T
 import           Data.Text.Encoding         as T
 import           Data.Text.Encoding.Error   as T
@@ -61,18 +61,18 @@ toSL = strConv Lenient
 
 
 instance StringConv String String where strConv _ = id
-instance StringConv String B.ByteString where strConv _ = B.pack
-instance StringConv String LB.ByteString where strConv _ = LB.pack
+instance StringConv String B.ByteString where strConv _ = T.encodeUtf8 . T.pack
+instance StringConv String LB.ByteString where strConv _ = LT.encodeUtf8 . LT.pack
 instance StringConv String T.Text where strConv _ = T.pack
 instance StringConv String LT.Text where strConv _ = LT.pack
 
-instance StringConv B.ByteString String where strConv _ = B.unpack
+instance StringConv B.ByteString String where strConv l = T.unpack . decodeUtf8T l
 instance StringConv B.ByteString B.ByteString where strConv _ = id
 instance StringConv B.ByteString LB.ByteString where strConv _ = LB.fromChunks . return
 instance StringConv B.ByteString T.Text where strConv = decodeUtf8T
 instance StringConv B.ByteString LT.Text where strConv l = strConv l . LB.fromChunks . return
 
-instance StringConv LB.ByteString String where strConv _ = LB.unpack
+instance StringConv LB.ByteString String where strConv l = LT.unpack . decodeUtf8LT l
 instance StringConv LB.ByteString B.ByteString where strConv _ = B.concat . LB.toChunks
 instance StringConv LB.ByteString LB.ByteString where strConv _ = id
 instance StringConv LB.ByteString T.Text where strConv l = decodeUtf8T l . strConv l
