@@ -1,6 +1,6 @@
 ---
 name: string-conv
-version: 0.1.1
+version: 0.2.0
 synopsis: Standardized conversion between string types
 description: >
   Avoids the need to remember many different functions for converting string
@@ -36,22 +36,13 @@ when:
         - -fwarn-redundant-constraints
         - -Wincomplete-record-updates
         - -Wincomplete-uni-patterns
-        - -Wpartial-fields
-        - -Wmissing-home-modules
         - -Widentities
-        - -Wcpp-undef
-        - -Wmissing-export-lists
     else:
       ghc-options:
         - -Wall
         - -fwarn-redundant-constraints
         - -Wincomplete-record-updates
-        - -Wincomplete-uni-patterns
-        - -Wpartial-fields
-        - -Wmissing-home-modules
         - -Widentities
-        - -Wcpp-undef
-        - -Wmissing-export-lists
 
 library:
   source-dirs:
@@ -73,7 +64,7 @@ tests:
     dependencies:
       - base >= 4.4 && < 5
       - bytestring
-      - quickcheck-instances
+      - quickcheck-instances >= 0.3.17
       - string-conv
       - tasty
       - tasty-quickcheck
