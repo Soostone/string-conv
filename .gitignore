@@ -2,3 +2,4 @@ dist
 dist-*
 TAGS
 *.swp
+.stack-work/
