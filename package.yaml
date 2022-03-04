@@ -1,0 +1,80 @@
+---
+name: string-conv
+version: 0.1.1
+synopsis: Standardized conversion between string types
+description: >
+  Avoids the need to remember many different functions for converting string
+  types. Just use one universal function toS for all monomorphic string
+  conversions.
+license: BSD3
+license-file: LICENSE
+author: Ozgun Ataman
+maintainer: ozgun.ataman@soostone.com
+copyright: Soostone Inc, 2012-2015
+category: Data, String, Text
+homepage: https://github.com/Soostone/string-conv
+bug-reports: https://github.com/Soostone/string-conv/issues
+build-type: Simple
+extra-source-files:
+  - README.md
+  - changelog.md
+github: Soostone/string-conv
+
+flags:
+  lib-Werror:
+    manual: true
+    default: false
+    description: >
+      Turn on -Wall and -Werror. Should always be enabled in development.
+
+when:
+  - condition: flag(lib-Werror)
+    then:
+      ghc-options:
+        - -Wall
+        - -Werror
+        - -fwarn-redundant-constraints
+        - -Wincomplete-record-updates
+        - -Wincomplete-uni-patterns
+        - -Wpartial-fields
+        - -Wmissing-home-modules
+        - -Widentities
+        - -Wcpp-undef
+        - -Wmissing-export-lists
+    else:
+      ghc-options:
+        - -Wall
+        - -fwarn-redundant-constraints
+        - -Wincomplete-record-updates
+        - -Wincomplete-uni-patterns
+        - -Wpartial-fields
+        - -Wmissing-home-modules
+        - -Widentities
+        - -Wcpp-undef
+        - -Wmissing-export-lists
+
+library:
+  source-dirs:
+    - src
+  dependencies:
+    - base >= 4.4 && < 5
+    - bytestring
+    - text
+
+tests:
+  tests:
+    source-dirs:
+      - test
+    main: Main.hs
+    ghc-options:
+      - -threaded
+      - -rtsopts
+      - -with-rtsopts=-N
+    dependencies:
+      - base >= 4.4 && < 5
+      - bytestring
+      - quickcheck-instances
+      - string-conv
+      - tasty
+      - tasty-quickcheck
+      - text

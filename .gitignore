@@ -3,3 +3,4 @@ dist-*
 TAGS
 *.swp
 .stack-work/
+string-conv.cabal
